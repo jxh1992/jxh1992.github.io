@@ -26,6 +26,13 @@ footer {
 	border: 10px solid black;
 	padding: 5px;
 }
+.avatar {
+}
+.avatar .photo {
+	height: 80px;
+	width: 80px;
+	border-radius: 40px;
+}
 </style>
 
 <link href="css/default.css" type="text/css" rel="stylesheet">
@@ -40,15 +47,26 @@ footer {
 <div id="mainDiv">
 	<div id="content">
 
+		<!--头像-->
+		<div class="avatar" style="float: left">
+			<img class="photo" src="boy.png"/>
+		</div>
+
+		<div class="avatar" style="float: right">
+			<img class="photo" src="girl.png">
+		</div>
+
+		<!--代码显示器-->
 		<div id="code">
 			<span class="comments">/**</span><br />
-			<span class="space"/><span class="comments">*Prepared for my future lover from Xinhou</span><br />
+			<span class="space"/><span class="comments">*Prepared for my lover from Xinhou</span><br />
 			<span class="space"/><span class="comments">*/</span><br />
 
 			Boy name = <span class="keyword">Mr</span> Xinhou<br />
-			Girl name = <span class="keyword">Mrs</span> BUG<br />
+			Girl name = <span class="keyword">Miss</span> U<br />
 		</div>
 
+		<!--爱心计时器-->
 		<div id="loveHeart">
 			<canvas id="garden"></canvas>
 			<div id="words">
@@ -71,7 +89,7 @@ footer {
 var offsetX = $("#loveHeart").width() / 2;
 var offsetY = $("#loveHeart").height() / 2 - 55;
 var together = new Date();
-together.setFullYear(2016, 2, 14);
+together.setFullYear(2017, 1, 1);
 together.setHours(0);
 together.setMinutes(0);
 together.setSeconds(0);
