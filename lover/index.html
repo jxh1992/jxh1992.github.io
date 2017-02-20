@@ -2,7 +2,7 @@
 <html xmlns="http://jiangxh1992.github.io">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>蒋信厚|BUG</title>
+<title>Miss Left|执子之手，将子拖走|Mr Right</title>
 
 <style type="text/css">
 @font-face {
@@ -27,6 +27,9 @@ footer {
 	padding: 5px;
 }
 .avatar {
+	color: purple;
+	font-family:"Consolas","Monaco","Bitstream Vera Sans Mono","Courier New","sans-serif";
+	font-size:18px
 }
 .avatar .photo {
 	height: 80px;
@@ -50,21 +53,28 @@ footer {
 
 		<!--头像-->
 		<div class="avatar" style="float: left">
-			<img class="photo" src="boy.png"/>
+			<img class="photo" src="girl.png"/>
+			<div><font>***</font></div>
 		</div>
 
 		<div class="avatar" style="float: right">
-			<img class="photo" src="girl.png">
+			<img class="photo" src="boy.png">
+			<div><font>Jiang Xinhou</font></div>
 		</div>
 
 		<!--代码显示器-->
 		<div id="code">
 			<span class="comments">/**</span><br />
-			<span class="space"/><span class="comments">*Prepared for my lover from Xinhou</span><br />
+			<span class="space"/><span class="comments">*我们的关系是一个循环引用，你强引用我，我也强引用你，我们的引用计</span><br />
+			<span class="space"/><span class="comments">*数永远不为零，我们也永远不会被系统清除，我们的家就是这个世界的一</span><br />
+			<span class="space"/><span class="comments">*块内存泄漏，我们只能同时被销毁，被回收...</span><br />
 			<span class="space"/><span class="comments">*/</span><br />
-
-			Boy name = <span class="keyword">Mr</span> Xinhou<br />
-			Girl name = <span class="keyword">Miss</span> U<br />
+			<span class="class">Person</span> *boy = [[<span class="class">Person</span> <span class="method">alloc</span>] <span class="method">init</span>];<br/>
+    		<span class="class">Person</span> *girl = [[<span class="class">Person</span> <span class="method">alloc</span>] <span class="method">init</span>];<br/>
+    		boy.<span class="class">name</span> = <span class="string">@"Jiang xinhou"</span>;<br/>
+   		 	girl.<span class="class">name</span> = <span class="string">@"***"</span>;<br/>
+    		boy.<span class="class">lover</span> = girl;<br/>
+    		girl.<span class="class">lover</span> = boy;
 		</div>
 
 		<!--爱心计时器-->
