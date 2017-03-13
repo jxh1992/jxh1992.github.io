@@ -10,7 +10,7 @@
 #loveu .signature{margin-top:10px;font-size:20px;font-style:italic}
 #clickSound{display:none}
 
-#code{float:left;width:400px;height:190px;color:#fff;font-family:"Consolas","Monaco","Bitstream Vera Sans Mono","Courier New","sans-serif";font-size:12px}
+#code{float:left;width:100%;height:100%;color:#fff;font-family:"Consolas","Monaco","Bitstream Vera Sans Mono","Courier New","sans-serif";font-size:12px}
 #code .string{color:red}
 #code .class{color: #91c275}
 #code .method{color: #3d89b4}

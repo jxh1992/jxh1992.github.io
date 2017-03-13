@@ -2,7 +2,7 @@
 <html xmlns="http://jiangxh1992.github.io">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Miss Left|执子之手，将子拖走|Mr Right</title>
+<title>Miss Left|执子之手，与子偕老|Mr Right</title>
 
 <style type="text/css">
 @font-face {
@@ -10,34 +10,12 @@
 	src: url('digital-7_mono.ttf') format("truetype");
 }
 body {
-	/*
-	background: url(home_bg.jpg) no-repeat center center fixed;
-	-webkit-background: cover;
-	-moz-background: cover;
-	-o-background: cover;
-	background-size: cover;*/
-	background: url(bg_pattern.jpg);
-}
-footer {
-	text-align: center;
-	clear: both;
-	color: white;
+	background-color: black;
 }
 #code {
 	background-color: #282b35;
-	border: 10px solid black;
-	padding: 5px;
-}
-.avatar {
-	color: pink;
-	font-family:"Consolas","Monaco","Bitstream Vera Sans Mono","Courier New","sans-serif";
-	font-size:18px
-}
-.avatar .photo {
-	height: 80px;
-	width: 80px;
-	border-radius: 42px;
-	border: 4px dotted pink;
+	border: 5px solid black;
+	padding: 25px;
 }
 </style>
 
@@ -49,87 +27,24 @@ footer {
 </head>
 
 <body>
-
-<div id="mainDiv">
-	<div id="content">
-
-		<!--头像-->
-		<div class="avatar" style="float: left">
-			<img class="photo" src="girl.png"/>
-			<div><font>***</font></div>
-		</div>
-
-		<div class="avatar" style="float: right">
-			<img class="photo" src="boy.png">
-			<div><font>Jiang Xinhou</font></div>
-		</div>
-
-		<!--爱心计时器-->
-		<div id="loveHeart">
-			<canvas id="garden"></canvas>
-			<div id="words">
-				<div id="messages">
-					我们在一起的时间，滴答滴答... ...
-					<div id="elapseClock"></div>
-				</div>
-				<div id="loveu">
-					LOVE YOU FOREVER!<br/>
-					<div class="signature">- Mr. Xinhou</div>
-				</div>
-			</div>
-		</div>
-
-		<!--代码显示器-->
-		<div id="code">
-			<span class="comments">/**</span><br />
-			<span class="space"/><span class="comments">*我们的关系是一个循环引用，你强引用我，我也强引用你，我们的引用计</span><br />
-			<span class="space"/><span class="comments">*数永远不为零，我们也永远不会被系统清除，我们的家就是这个世界的一</span><br />
-			<span class="space"/><span class="comments">*块内存泄漏，我们只能同时被销毁，被回收...</span><br />
-			<span class="space"/><span class="comments">*/</span><br />
-			<span class="class">Person</span> *boy = [[<span class="class">Person</span> <span class="method">alloc</span>] <span class="method">init</span>];<br/>
-    		<span class="class">Person</span> *girl = [[<span class="class">Person</span> <span class="method">alloc</span>] <span class="method">init</span>];<br/>
-    		boy.<span class="class">name</span> = <span class="string">@"Jiang xinhou"</span>;<br/>
-   		 	girl.<span class="class">name</span> = <span class="string">@"***"</span>;<br/>
-    		boy.<span class="class">lover</span> = girl;<br/>
-    		girl.<span class="class">lover</span> = boy;
-		</div>
-
-	</div>
+<!--代码显示器-->
+<div id="code">
+	<span class="comments">/**</span><br />
+	<span class="space"/><span class="comments">*我们的关系是一个循环引用，你强引用我，我也强引用你，我们的引用计</span><br />
+	<span class="space"/><span class="comments">*数永远不为零，我们也永远不会被系统清除，我们的家就是这个世界的一</span><br />
+	<span class="space"/><span class="comments">*块内存泄漏，我们只能同时被销毁，被回收...</span><br />
+	<span class="space"/><span class="comments">*/</span><br />
+	<span class="class">Person</span> *boy = [[<span class="class">Person</span> <span class="method">alloc</span>] <span class="method">init</span>];<br/>
+	<span class="class">Person</span> *girl = [[<span class="class">Person</span> <span class="method">alloc</span>] <span class="method">init</span>];<br/>
+	boy.<span class="class">name</span> = <span class="string">@"Jiang xinhou"</span>;<br/>
+	 	girl.<span class="class">name</span> = <span class="string">@"Huang Dan"</span>;<br/>
+	boy.<span class="class">lover</span> = girl;<br/>
+	girl.<span class="class">lover</span> = boy;
 </div>
 
-<!--爱心动画-->
 <script type="text/javascript">
-var offsetX = $("#loveHeart").width() / 2;
-var offsetY = $("#loveHeart").height() / 2 - 55;
-var together = new Date();
-together.setFullYear(2017, 1, 1);
-together.setHours(0);
-together.setMinutes(0);
-together.setSeconds(0);
-together.setMilliseconds(0);
-
-if (!document.createElement('canvas').getContext) {
-	var msg = document.createElement("div");
-	msg.id = "errorMsg";
-	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
-	document.body.appendChild(msg);
-	$("#code").css("display", "none")
-	$("#copyright").css("position", "absolute");
-	$("#copyright").css("bottom", "10px");
-	document.execCommand("stop");
-} else {
-	setTimeout(function () {
-		startHeartAnimation();
-	}, 0);
-
-	timeElapse(together);
-	setInterval(function () {
-		timeElapse(together);
-	}, 500);
-
-	adjustCodePosition();
-	$("#code").typewriter();
-}
+$("#code").typewriter();
+setTimeout("javascript:location.href='lover.html'", 28000);
 </script>
 
 </body>
