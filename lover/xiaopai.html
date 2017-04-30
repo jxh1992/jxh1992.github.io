@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://jiangxh1992.github.io">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>你好哇~ 小排!</title>
+
+<style type="text/css">
+@font-face {
+	font-family: digit;
+	src: url('digital-7_mono.ttf') format("truetype");
+}
+body {
+	background-color: black;
+}
+#confirm {
+	width: 100%;
+	height: 30px;
+}
+#code {
+	background-color: #282b35;
+	border: 5px solid black;
+	padding: 25px;
+}
+</style>
+
+<link href="css/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/garden.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+
+</head>
+
+<body>
+
+<!--代码显示器-->
+<div id="code">
+	<span class="comments">/**</span><br />
+	<span class="space"/><span class="comments">*希望我们的关系是一个循环引用(Cycle Reference)，你强引用我，我也强引用你，我们的引用计</span><br />
+	<span class="space"/><span class="comments">*数(Retain Count)永远不为零，我们将永远不会被系统清除，我们的精神之家就是这个世界的一</span><br />
+	<span class="space"/><span class="comments">*块内存泄漏，世界不毁灭，我们永相存... ...</span><br />
+	<span class="space"/><span class="comments">*/</span><br />
+	<span class="class">Person</span> *boy = [[<span class="class">Person</span> <span class="method">alloc</span>] <span class="method">init</span>];<br/>
+	<span class="class">Person</span> *girl = [[<span class="class">Person</span> <span class="method">alloc</span>] <span class="method">init</span>];<br/>
+	boy.<span class="class">name</span> = <span class="string">@"Jiang Xinhou"</span>;<br/>
+	 	girl.<span class="class">name</span> = <span class="string">@"Wei Fangqi"</span>;<br/>
+	boy.<span class="class">lover</span> = girl;<br/>
+	girl.<span class="class">lover</span> = boy;
+</div>
+
+<script type="text/javascript">
+
+$("#code").typewriter();
+		
+setTimeout("javascript:location.href='lover.html'", 28000);
+
+</script>
+
+</body>
+</html>
