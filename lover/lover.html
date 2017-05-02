@@ -3,7 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>小排在左|猿猿在右</title>
-
+<script src="snow/js/jquery.min.js"></script>
+<script src="snow/js/snow.js"></script>
+<script>createSnow('', 60);</script>
 <style type="text/css">
 @font-face {
 	font-family: digit;
@@ -11,13 +13,9 @@
 }
 body,html {margin: 0px;padding: 0px;width: 100%;height: 100%;}
 body {
-	/*
-	background: url(home_bg.jpg) no-repeat center center fixed;
-	-webkit-background: cover;
-	-moz-background: cover;
-	-o-background: cover;
-	background-size: cover;*/
-	background: url(http://www.fevte.com/data/attachment/portal/201609/13/101533rf09nv20fw9fevdn.gif);
+	background-size: 100%;
+	/*background: url(http://www.fevte.com/data/attachment/portal/201609/13/101533rf09nv20fw9fevdn.gif) no-repeat;*/
+	background-color: rgb(38,38,38);
 }
 footer {
 	text-align: center;
@@ -32,7 +30,8 @@ footer {
 .avatar {
 	color: rgb(205,60,70);
 	font-family:"Consolas","Monaco","Bitstream Vera Sans Mono","Courier New","sans-serif";
-	font-size:18px
+	font-size:18px;
+	background:url(http://www.fevte.com/data/attachment/portal/201609/13/101533rf09nv20fw9fevdn.gif);
 }
 .avatar .photo {
 	height: 80px;
@@ -40,6 +39,7 @@ footer {
 	border-radius: 42px;
 	border: 4px dotted rgb(205,60,70);
 }
+
 </style>
 
 <link href="css/default.css" type="text/css" rel="stylesheet">
@@ -50,7 +50,7 @@ footer {
 </head>
 
 <body>
-
+<audio src="bg.mp3" autoplay="autoplay" loop='-1'></audio>
 <div id="mainDiv">
 	<div id="content">
 
