@@ -114,7 +114,7 @@ if (!document.createElement('canvas').getContext) {
 	}, 500);
 }
 
- function autoPlayAudio1() {
+function autoPlayAudio1() {
         wx.config({
             // 配置信息, 即使不正确也能使用 wx.ready
             debug: false,
@@ -127,8 +127,8 @@ if (!document.createElement('canvas').getContext) {
         wx.ready(function() {
             document.getElementById('bgmusic').play();
         });
- }
- autoPlayAudio1();
+}
+autoPlayAudio1();
 </script>
 
 </body>

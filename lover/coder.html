@@ -24,8 +24,8 @@ body {
 </style>
 
 <link href="css/default.css" type="text/css" rel="stylesheet">
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/garden.js"></script>
 <script type="text/javascript" src="js/functions.js"></script>
 
 </head>
@@ -47,9 +47,27 @@ body {
 	girl.<span class="class">lover</span> = boy;
 </div>
 
+<audio id="bgmusic" src="http://fjdx.sc.chinaz.com/files/download/sound1/201312/3895.mp3" autoplay="autoplay" loop="-1"></audio>
+
 <script type="text/javascript">
 
 $("#code").typewriter();
+
+ function autoPlayAudio1() {
+        wx.config({
+            // 配置信息, 即使不正确也能使用 wx.ready
+            debug: false,
+            appId: '',
+            timestamp: 1,
+            nonceStr: '',
+            signature: '',
+            jsApiList: []
+        });
+        wx.ready(function() {
+            document.getElementById('bgmusic').play();
+        });
+ }
+ autoPlayAudio1();
 
 setTimeout("javascript:window.location.replace('lover.html')", 30000);
 
