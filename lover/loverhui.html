@@ -2,44 +2,133 @@
 <html xmlns="http://jiangxh1992.github.io">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>此门已关</title>
-
+<title>你在左|我在右</title>
+<script src="snow/js/jquery.min.js"></script>
+<script src="snow/js/snow.js"></script>
+<script>createSnow('', 60);</script>
 <style type="text/css">
 @font-face {
 	font-family: digit;
 	src: url('digital-7_mono.ttf') format("truetype");
 }
-html,body {
-	margin: 0px;
-	padding: 0px;
-	height: 100%;
-	width: 100%;
-}
+body,html {margin: 0px;padding: 0px;width: 100%;height: 100%;}
 body {
-	background-color: rgb(38,38,38);
+	background-size: 100%;
+	background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1493722171&di=bcc1fec51bf5e75bc924aebbe16b8be0&src=http://image.tianjimedia.com/uploadImages/2012/086/553BN02671AX.jpg) no-repeat;
+	background-color: rgb(239,168,143);
+}
+footer {
+	text-align: center;
+	clear: both;
+	color: white;
 }
 #code {
-	display: block;
-	text-align: center;
+	background-color: #282b35;
+	border: 10px solid black;
+	padding: 5px;
 }
+.avatar {
+	color: rgb(205,60,70);
+	font-family:"Consolas","Monaco","Bitstream Vera Sans Mono","Courier New","sans-serif";
+	font-size:18px;
+}
+.avatar .photo {
+	height: 80px;
+	width: 80px;
+	border-radius: 42px;
+	border: 4px dotted rgb(205,60,70);
+}
+
 </style>
 
 <link href="css/default.css" type="text/css" rel="stylesheet">
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/garden.js"></script>
 <script type="text/javascript" src="js/functions.js"></script>
+
 </head>
 
 <body>
+<audio id="bgmusic" src="bg.mp3" autoplay="autoplay" loop='-1'></audio>
+<div id="mainDiv">
+	<div id="content">
 
-<!--代码显示器-->
-<div id="code">
-	<br><br>
-	此门已关，请以后再来... ...
+		<!--头像-->
+		<div class="avatar" style="float: left">
+			<img class="photo" src="girl.png"/>
+			<div><font>张慧</font></div>
+		</div>
+
+		<div class="avatar" style="float: right">
+			<img class="photo" src="boy.png">
+			<div><font>蒋信厚</font></div>
+		</div>
+
+		<!--爱心计时器-->
+		<div id="loveHeart">
+			<canvas id="garden"></canvas>
+			<div id="words">
+				<div id="messages">
+					从2017-05-20 我们第一个520开始... ...
+					<div id="elapseClock"></div>
+				</div>
+				<div id="loveu">
+					你好哇!<br/>
+					<div class="signature">-- 你家猿猿</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
 </div>
 
+<!--爱心动画-->
 <script type="text/javascript">
-$("#code").typewriter();
-//setTimeout("javascript:window.location.replace('enter.html')", 12000);
+var offsetX = $("#loveHeart").width() / 2;
+var offsetY = $("#loveHeart").height() / 2 - 55;
+var together = new Date();
+together.setFullYear(2017, 4, 19);
+together.setHours(24);
+together.setMinutes(0);
+together.setSeconds(0);
+together.setMilliseconds(0);
+
+if (!document.createElement('canvas').getContext) {
+	var msg = document.createElement("div");
+	msg.id = "errorMsg";
+	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+	document.body.appendChild(msg);
+	$("#code").css("display", "none")
+	$("#copyright").css("position", "absolute");
+	$("#copyright").css("bottom", "10px");
+	document.execCommand("stop");
+} else {
+	setTimeout(function () {
+		startHeartAnimation();
+	}, 0);
+
+	timeElapse(together);
+	setInterval(function () {
+		timeElapse(together);
+	}, 500);
+}
+
+function autoPlayAudio1() {
+        wx.config({
+            // 配置信息, 即使不正确也能使用 wx.ready
+            debug: false,
+            appId: '',
+            timestamp: 1,
+            nonceStr: '',
+            signature: '',
+            jsApiList: []
+        });
+        wx.ready(function() {
+            document.getElementById('bgmusic').play();
+        });
+}
+autoPlayAudio1();
 </script>
 
 </body>
