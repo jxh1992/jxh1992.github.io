@@ -2,74 +2,61 @@
 <html xmlns="http://jiangxh1992.github.io">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>^_^</title>
+<title>致榕榕</title>
 
 <style type="text/css">
 @font-face {
 	font-family: digit;
 	src: url('digital-7_mono.ttf') format("truetype");
 }
+body,html {margin: 0px;padding: 0px;width: 100%;height: 100%;}
 body {
-	background-color: black;
+	background-size: 100%;
+	background: url(png/envelop.png) no-repeat;
+	background-position: right;
+	background-color: rgb(240,247,228);
 }
 #confirm {
 	width: 100%;
 	height: 30px;
 }
 #code {
-	background-color: #282b35;
-	border: 5px solid black;
-	padding: 25px;
+	left: 50px;
 }
+
 </style>
 
 <link href="css/default.css" type="text/css" rel="stylesheet">
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/functions.js"></script>
-
 </head>
-
 <body>
-
+<br/>
 <!--代码显示器-->
 <div id="code">
-	<span class="comments">/**</span><br />
-	<span class="space"/><span class="comments">*好幸福遇到你，相信是命中注定才会那样内心坚定义无反顾，想执子手，慢慢走。</span><br />
-	<span class="space"/><span class="comments">*我知道，前面依然会有想不到的艰与难，有太多的责任要承担，也有太多的挫折</span><br />
-	<span class="space"/><span class="comments">*要克服...只想能和你携手同心，创造只属于我们的家园，遮风避雨，与子偕老...</span><br />
+	<span class="comments">/**</span><br/>
+	<span class="space"/><span class="comments">*曾对以后的以后充满疑问，曾踌躇拼搏依旧而为何，曾对爱情的存否丧失信心...</span>
+	<br />
+	<span class="space"/><span class="comments">*直到你的出现，温柔、可爱、善良和真心，让我感受到，可以最后一次义无反顾，倾之所有，</span>
+	<br />
+	<span class="space"/><span class="comments">*不畏惧伤痕累累，不畏惧何艰何难，不畏惧压力挫折，因为我一直相信，来此一遭唯与君度，而无憾此生。</span>
+	<br />
+	<span class="space"/><span class="comments">*相信，有你的地方就有家，我会努力做你的依靠，执子手，与子老，平凡坦荡共逍遥。</span>
+	<br/>
 	<span class="space"/><span class="comments">*/</span><br />
-	<span class="class">Person</span> *boy = [[<span class="class">Person</span> <span class="method">alloc</span>] <span class="method">init</span>];<br/>
-	<span class="class">Person</span> *girl = [[<span class="class">Person</span> <span class="method">alloc</span>] <span class="method">init</span>];<br/>
-	boy.<span class="class">name</span> = <span class="string">@"Jiang Xinhou"</span>;<br/>
-	 	girl.<span class="class">name</span> = <span class="string">@"Jiang Rong"</span>;<br/>
-	boy.<span class="class">lover</span> = girl;<br/>
-	girl.<span class="class">lover</span> = boy;
+	<span class="class">Person</span> *you = [[<span class="class">Person</span> <span class="method">alloc</span>] <span class="method">init</span>];<br/>
+	<span class="class">Person</span> *me = [[<span class="class">Person</span> <span class="method">alloc</span>] <span class="method">init</span>];<br/>
+	me.<span class="class">name</span> = <span class="string">@"Jiang Xinhou"</span>;<br/>
+	you.<span class="class">name</span> = <span class="string">@"Jiang Rong"</span>;<br/>
+	me.<span class="class">lover</span> = you;<br/>
+	you.<span class="class">lover</span> = me;
 </div>
-
-<audio id="bgmusic" src="http://fjdx.sc.chinaz.com/files/download/sound1/201312/3895.mp3" autoplay="autoplay" loop="-1"></audio>
 
 <script type="text/javascript">
 
 $("#code").typewriter();
-
- function autoPlayAudio1() {
-        wx.config({
-            // 配置信息, 即使不正确也能使用 wx.ready
-            debug: false,
-            appId: '',
-            timestamp: 1,
-            nonceStr: '',
-            signature: '',
-            jsApiList: []
-        });
-        wx.ready(function() {
-            document.getElementById('bgmusic').play();
-        });
- }
- autoPlayAudio1();
-
-setTimeout("javascript:window.location.replace('lover.html')", 30000);
+setTimeout("javascript:window.location.replace('lover.html')", 36000);
 
 </script>
 
