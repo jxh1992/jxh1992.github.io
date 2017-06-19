@@ -12,7 +12,7 @@
 
 #code{float:right;width:100%;height:100%;color:#000;font-family:"Consolas","Monaco","Bitstream Vera Sans Mono","Courier New","sans-serif";font-size:large;}
 #code .string{color:red}
-#code .class{color: #91c275}
+#code .class{color: rgb(169,118,204)}/*#91c275*/
 #code .method{color: #3d89b4}
 #code .keyword{color:#7f0055;font-weight:bold}
 #code .placeholder{margin-left:15px}#code .space{margin-left:7px}
