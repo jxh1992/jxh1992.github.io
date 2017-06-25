@@ -6,13 +6,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link href="css/default.css" type="text/css" rel="stylesheet">
-<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/garden.js"></script>
-<script type="text/javascript" src="js/functions.js"></script>
-<script src="snow/js/jquery.min.js"></script>
-<script src="snow/js/snow.js"></script>
-<script>createSnow('', 60);</script>
+<link rel="stylesheet" href="css/style.css">
 
 <style>
 @font-face {
@@ -21,8 +15,8 @@
 }
 body, html {height: 100%}
 body {background-color: rgb(0,0,0);}
-.bgimg {
-    background-image: url('png/bg2.jpg');
+#bgimg {
+    background-image: url(png/bg.jpg);
     min-height: 100%;
     background-position: center;
     background-size: cover;
@@ -38,10 +32,14 @@ body {background-color: rgb(0,0,0);}
   border-radius: 42px;
   border: 4px dotted rgb(205,60,70);
 }
+#rongrong {
+  position: absolute;
+  bottom: 0px;
+}
 </style>
 
 <body>
-<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+<div id="bgimg" class="w3-display-container w3-animate-opacity w3-text-white">
 <audio id="bgmusic" src="bg.mp3" autoplay="autoplay" loop='-1'></audio>
 
 <!--头像-->
@@ -55,60 +53,63 @@ body {background-color: rgb(0,0,0);}
   <div><font></font></div>
 </div>
 
-<div id="mainDiv">
-  <div id="content">
-    <!--爱心计时器-->
-    <div id="loveHeart">
-      <canvas id="garden"></canvas>
-      <div id="words">
-        <div id="messages">
-          从2017-05-28 我们认识开始... ...
-          <div id="elapseClock"></div>
-          
-        </div>
-        <div id="loveu">
-            愿与君分秒度余生<br/>
-          给美丽可爱善良的榕榕<br/>
-          <div class="signature">---- 永远爱你的厚厚</div>
-        </div>
-      </div>
-    </div>
-
+<canvas id="canvas"></canvas>
+<div id="control">
+  <div>
+    <!-- 文字 -->
+    <input type="text" id="message" value="爱榕榕" onchange="change()">
+    <!-- 重力 -->
+    <input type="range" id="gra" value="0" min="-1" max="1" step="0.1" onchange="changeV()">
+    <!-- 周期 -->
+    <input type="range" id="dur" value="0.4" min="0.1" max="0.99" step="0.01" onchange="changeV()">
+    <!-- 速度 -->
+    <input type="range" id="speed" value="0.1" min="0" max="5" ste="0.01" onchange="changeV()">
+    <!-- 半径 -->
+    <input type="range" id="rad" value="2" min="1.8" max="20" step="0.1" onchange="changeV()">
+    <!-- 分辨率 -->
+    <input type="range" id="res" value="10" min="3" max="20" step="1" onchange="change()">
   </div>
 </div>
 
+<div id="rongrong">
+<p>从2017.5.28:</p>
+<p id="timer">^_^</p>
 </div>
 
-<!--爱心动画-->
 <script type="text/javascript">
-var offsetX = $("#loveHeart").width() / 2;
-var offsetY = $("#loveHeart").height() / 2 - 55;
-var together = new Date();
-together.setFullYear(2017, 4, 28);
-together.setHours(23);
-together.setMinutes(59);
-together.setSeconds(0);
-together.setMilliseconds(0);
+/*随机背景*/
+var index =parseInt(Math.random()*(5));
+document.getElementById("bgimg").style.backgroundImage = 'url(png/bg'+index+'.jpg)';
 
-if (!document.createElement('canvas').getContext) {
-  var msg = document.createElement("div");
-  msg.id = "errorMsg";
-  msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
-  document.body.appendChild(msg);
-  $("#code").css("display", "none")
-  $("#copyright").css("position", "absolute");
-  $("#copyright").css("bottom", "10px");
-  document.execCommand("stop");
-} else {
-  setTimeout(function () {
-    startHeartAnimation();
-  }, 0);
+  /*计时*/
+var message = document.getElementById("message");
+var timer = document.getElementById("timer");
+// 设置起始日期
+var startDate = new Date();
+startDate.setFullYear(2017,4,28);
+startDate.setHours(23);
+startDate.setMinutes(59);
+startDate.setSeconds(0);
+var Dmms = startDate.getTime(); 
 
-  timeElapse(together);
-  setInterval(function () {
-    timeElapse(together);
-  }, 500);
-}
+setInterval(function(){
+// 秒数差
+var d = new Date();
+var Gmms = d.getTime();
+var distancemms = (Gmms - Dmms)/1000;
+
+var days = parseInt(distancemms/(3600*24));
+var hours = parseInt((distancemms%(3600*24))/3600);
+var minutes = parseInt((distancemms%3600)/60);
+var seconds = parseInt((distancemms%60));
+var text = days+"天"+hours+"时"+minutes+"分"+seconds+"秒";
+$("#timer").html(text);
+},1000);
+</script>
+
+<script type="text/javascript">
+/*雪花*/
+createSnow('', 60);
 
 function autoPlayAudio1() {
         wx.config({
@@ -130,5 +131,13 @@ $(".avatar").click(function(){
   javascript:window.location.replace('index.html');
 });
 </script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="snow/js/snow.js"></script>
+
+<script src="js/utils.js"></script>
+<script src="js/particles.js"></script>
+<script src="js/shape.js"></script>
+<script src="js/index.js"></script>
 </body>
 </html>
