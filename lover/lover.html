@@ -8,6 +8,9 @@
 <link href="css/default.css" type="text/css" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="snow/js/snow.js"></script>
 <style>
 @font-face {
   font-family: digit;
@@ -72,7 +75,6 @@ body {background-color: rgb(0,0,0);}
 </div>
 
 <div id="rongrong">
-<p>从2017.5.28:</p>
 <p id="timer">^_^</p>
 </div>
 
@@ -102,7 +104,7 @@ var days = parseInt(distancemms/(3600*24));
 var hours = parseInt((distancemms%(3600*24))/3600);
 var minutes = parseInt((distancemms%3600)/60);
 var seconds = parseInt((distancemms%60));
-var text = days+"天"+hours+"时"+minutes+"分"+seconds+"秒";
+var text = "2017.5.28:"+days+"天"+hours+"时"+minutes+"分"+seconds+"秒";
 $("#timer").html(text);
 },1000);
 </script>
@@ -131,10 +133,6 @@ $(".avatar").click(function(){
   javascript:window.location.replace('index.html');
 });
 </script>
-<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script src="snow/js/snow.js"></script>
-
 <script src="js/utils.js"></script>
 <script src="js/particles.js"></script>
 <script src="js/shape.js"></script>
