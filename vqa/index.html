@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	</style>
+	<script src="js/jquery.js"></script>
+	<style>
+	#title {
+		width: 100%;
+		height: 50px;
+		color: black;
+		font-size: 35px;
+		text-align: center;
+	}
+	#vqa {
+		width: 100%;
+		height: 40px;
+		padding: 5px;
+	}
+	#vqa input {
+		width: 90%;
+		height: 40px;
+	}
+	button {
+		background-color: #4CAF50; /* Green */
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		border: none;
+	}
+	#myfile {
+		display: block;
+		padding:15px 32px;
+		background:#4CAF50;
+		position:relative;
+		color:#fff;
+		text-align:center;
+		cursor:pointer
+	}
+	.hide_file {
+		position: absolute;
+		z-index: 1000;
+		opacity: 0;
+		cursor: pointer;
+		right: 0;
+		top: 0;
+		height: 100%;
+		font-size: 24px;
+		width: 100%;
+
+	}
+	#img_container {
+		display: block;
+		width: 100%;
+		height: 500px;
+		padding: 0px;
+		border: 1px solid black;
+	}
+	#img_container img {
+		height: 490px;
+	}
+	</style>
+</head>
+<body>
+    <div id="title">VQA DEMO FROM GROUP A</div>
+	<div id='img_container'><img id='img'/></div><br>
+
+	<div id="myfile">
+		Choose file
+		<input type="file" name="image" id="image" class="hide_file" onchange="readURL(this);"/>
+	</div>
+
+	<div id="vqa">
+		<input type="text" id="question" placeHolder="PLEASE ASK A QUESTION"/>
+		<button id="search_button">VQA</button>
+	</div>
+
+
+	<script type="text/javascript" defer>
+	var curImg;
+	var server = "interface.py"
+
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				curImg = e.target.result;
+				$('#img').attr('src', curImg)
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	initListener();
+	function initListener(){
+		document.getElementById('search_button').addEventListener('click', function(){
+			var ques  = $("#question").val();
+			$("#title").html(ques);
+			var form = new FormData()
+			// 参数为图片和问题文字
+			form.append('img', curImg)
+			form.append('question', ques)
+			// Use `jQuery.ajax` method
+			$.ajax(server, {
+				method: "POST",
+				data: form,
+				processData: false,
+				contentType: false,
+				success: function (msg) {
+					console.log(msg)
+				},
+				error: function () {
+					console.log('Upload error');
+				}
+			});
+		})
+	}
+	</script>
+</body>
+</html>
