@@ -1,69 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<style type="text/css">
-	</style>
-	<script src="js/jquery.js"></script>
-	<style>
-	#title {
-		width: 100%;
-		height: 50px;
-		color: black;
-		font-size: 35px;
-		text-align: center;
-	}
-	#vqa {
-		width: 100%;
-		height: 40px;
-		padding: 5px;
-	}
-	#vqa input {
-		width: 90%;
-		height: 40px;
-	}
-	button {
-		background-color: #4CAF50; /* Green */
-		color: white;
-		padding: 15px 32px;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		border: none;
-	}
-	#myfile {
-		display: block;
-		padding:15px 32px;
-		background:#4CAF50;
-		position:relative;
-		color:#fff;
-		text-align:center;
-		cursor:pointer
-	}
-	.hide_file {
-		position: absolute;
-		z-index: 1000;
-		opacity: 0;
-		cursor: pointer;
-		right: 0;
-		top: 0;
-		height: 100%;
-		font-size: 24px;
-		width: 100%;
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<title></title>
+<style type="text/css">
+</style>
+<script src="js/jquery.js"></script>
+<style>
+#title {
+	width: 100%;
+	height: 50px;
+	color: black;
+	font-size: 35px;
+	text-align: center;
+}
+#vqa {
+	margin: auto;
+	width: 80%;
+	height: 40px;
+}
+#vqa input {
+	width: 80%;
+	height: 88%;
+}
+button {
+	height: 100%;
+	width: 10%;
+	background-color: #4CAF50; /* Green */
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	border: none;
+}
+#myfile {
+	width: 20%;
+	display: block;
+	margin: auto;
+	padding:15px 32px;
+	background:#4CAF50;
+	position:relative;
+	color:#fff;
+	text-align:center;
+	cursor:pointer
+}
+.hide_file {
+	position: absolute;
+	z-index: 1000;
+	opacity: 0;
+	cursor: pointer;
+	right: 0;
+	top: 0;
+	height: 100%;
+	font-size: 24px;
+	width: 100%;
 
-	}
-	#img_container {
-		display: block;
-		width: 100%;
-		height: 500px;
-		padding: 0px;
-		border: 1px solid black;
-	}
-	#img_container img {
-		height: 490px;
-	}
-	</style>
+}
+#img_container {
+	display: block;
+	width: 80%;
+	height: 400px;
+	padding: 0px;
+	border: 1px solid black;
+	margin: auto;
+}
+#img_container img {
+	display: block;
+	height: 400px;
+	margin: auto;
+}
+#answer {
+	display: block;
+	margin: auto;
+	width: 80%;
+}
+
+.arrow{
+  width:10px;
+  height:10px;
+  border-radius: 50px;
+  left:50%;
+  top:10px;
+  background:red;
+  position: relative;
+}
+</style>
 </head>
+
 <body>
     <div id="title">VQA DEMO FROM GROUP A</div>
 	<div id='img_container'><img id='img'/></div><br>
@@ -78,20 +101,57 @@
 		<button id="search_button">VQA</button>
 	</div>
 
+	<div id="answer">
+	<ul id="reslu">
+	</ul>
+	<div class="arrow"></div>
+	</div>
+
 
 	<script type="text/javascript" defer>
 	var curImg;
-	var server = "interface.py"
+	var server = "http://172.31.104.61/vqa.php"
+
+	var direction='right';
+	(function(){
+	    var css={
+	        'left':'0%'
+	    };
+	    if(direction==='right'){
+	        direction='left';
+	        css.left='8%';
+	    }else{
+	        direction='right';
+	    }
+	    $('.arrow').animate(css,arguments.callee);
+	})();
+	$('.arrow').hide();
 
 	function readURL(input) {
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
 			reader.onload = function (e) {
-				curImg = e.target.result;
-				$('#img').attr('src', curImg)
+				var base64img = e.target.result;
+				console.log("base64:");
+				console.log(base64img);
+				curImg = dataURItoBlob(base64img);
+				console.log("binaryimg:");
+				console.log(curImg);
+				$('#img').attr('src', base64img)
 			};
 			reader.readAsDataURL(input.files[0]);
 		}
+	}
+
+	function dataURItoBlob(dataURI) {
+	    var byteString = atob(dataURI.split(',')[1]);
+	    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+	    var ab = new ArrayBuffer(byteString.length);
+	    var ia = new Uint8Array(ab);
+	    for (var i = 0; i < byteString.length; i++) {
+	        ia[i] = byteString.charCodeAt(i);
+	    }
+	    return new Blob([ab], {type: mimeString});
 	}
 
 	initListener();
@@ -99,18 +159,29 @@
 		document.getElementById('search_button').addEventListener('click', function(){
 			var ques  = $("#question").val();
 			$("#title").html(ques);
+			
+			$("ul").empty();
+			$(".arrow").show();
+
 			var form = new FormData()
 			// 参数为图片和问题文字
 			form.append('img', curImg)
 			form.append('question', ques)
+
 			// Use `jQuery.ajax` method
 			$.ajax(server, {
 				method: "POST",
+				dataType:'jsonp',
 				data: form,
 				processData: false,
 				contentType: false,
 				success: function (msg) {
-					console.log(msg)
+					$('.arrow').hide();
+					var res = msg['tags'];
+					console.log(msg);
+					for (var i = 0; i < res.length; i++) {
+						$("ul").append("<li>"+res[i]+"</li>");
+					}
 				},
 				error: function () {
 					console.log('Upload error');
