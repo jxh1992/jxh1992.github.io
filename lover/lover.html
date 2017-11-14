@@ -60,7 +60,7 @@ body {background-color: rgb(0,0,0);}
 <div id="control">
   <div>
     <!-- 文字 -->
-    <input type="text" id="message" value="爱榕榕" onchange="change()">
+    <input type="text" id="message" value="爱欠欠" onchange="change()">
     <!-- 重力 -->
     <input type="range" id="gra" value="0" min="-1" max="1" step="0.1" onchange="changeV()">
     <!-- 周期 -->
@@ -88,7 +88,7 @@ var message = document.getElementById("message");
 var timer = document.getElementById("timer");
 // 设置起始日期
 var startDate = new Date();
-startDate.setFullYear(2017,4,28);
+startDate.setFullYear(2017,9,1);
 startDate.setHours(23);
 startDate.setMinutes(59);
 startDate.setSeconds(0);
@@ -104,7 +104,7 @@ var days = parseInt(distancemms/(3600*24));
 var hours = parseInt((distancemms%(3600*24))/3600);
 var minutes = parseInt((distancemms%3600)/60);
 var seconds = parseInt((distancemms%60));
-var text = "2017.5.28:"+days+"天"+hours+"时"+minutes+"分"+seconds+"秒";
+var text = "2017.10.01:"+days+"天"+hours+"时"+minutes+"分"+seconds+"秒";
 $("#timer").html(text);
 },1000);
 </script>
